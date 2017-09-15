@@ -1,5 +1,6 @@
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import settings
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
 	                level=logging.INFO,
@@ -21,7 +22,7 @@ def chat(bot, update):
 	update.message.reply_text(text)
 
 def main():
-	updtr = Updater('427662093:AAG_rgSAM5cFkO7Li82-eCYcU1f10MUu8qw')
+	updtr = Updater(settings.TELEGRAM_API_KEY)
 	updtr.dispatcher.add_handler(CommandHandler('start', start_bot))
 	updtr.dispatcher.add_handler(MessageHandler(Filters.text, chat))
 
